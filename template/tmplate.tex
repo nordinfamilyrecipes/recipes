@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{xparse}
+\usepackage{listings}
+\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{scrextend}
+\usepackage{enumitem}
+\usepackage{parallel}
+\hbadness=99999
+\hfuzz=9999pt
+
+\usepackage[T1]{fontenc}
+\usepackage{FiraSans} %% Option 'black' gives heavier bold face
+%% The 'sfdefault' option to make the base font sans serif
+
+\usepackage[proportional,scaled=1.064]{erewhon}
+\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\pagestyle{fancy}
+
+% Your "Recipes.sty" package starts here:
+\newcommand{\Recipe}[1]{\newpage\lhead{}\chead{}\rhead{}\lfoot{}\rfoot{}\cfoot{}}
+\newcommand{\Title}[1]{\section*{\textsf{#1}}}
+\newcommand{\Serves}[1]{\lhead{Serves #1}}
+\newcommand{\PrepTime}[1]{\chead{Prep Time: #1}}
+\newcommand{\CookTime}[1]{\rhead{Cook Time: #1}}
+
+\newcommand{\Celsius}[1]{$#1^\circ$C}
+\newcommand{\Fahrenheit}[1]{$#1^\circ$F}
+
+\newcommand{\INGREDIENTS}{\textbf{{\textsf{Ingredients}}}}
+\newcommand{\INSTRUCTIONS}{\textbf{{\textsf{Instructions}}}}
+
+\newcommand{\Item}[2]{\item[#1]#2}
+\newcommand{\Bullet}[1]{\item{#1}}
+\newcommand{\IList}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\List}[1]{\begin{itemize}[leftmargin=*]#1\end{itemize}}
+
+\newcommand{\Split}[2]{
+    \begin{minipage}{0.45\textwidth}
+        #1
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        #2
+    \end{minipage}
+}
+
+\newcommand{\Indented}[1]{
+    \begin{addmargin}[1em]{0em}
+        #1
+    \end{addmargin}
+}
+
+\newcommand{\IngredientsList}[2]{
+    \Indented{
+        #1
+        \Indented {
+            #2
+        }
+    }
+}
+
+
+
+
+
+\begin{document}
+
+\Serves{\{\# people\}}
+\CookTime{\{time\}}
+\PrepTime{\{time\}}
+
+\Indented{
+    \Title{Template}
+    \Indented{
+        \INGREDIENTS
+        \\\\
+        \Split {
+            \IngredientsList{Item 1:}{
+                \List{
+                    \Bullet{This is the 1st item.}
+                    \Bullet{This is the 2nd item.}
+                }
+            }
+        }{
+            \IngredientsList{Item 2:}{
+                \List{
+                    \Bullet{This is the 1st item.}
+                    \Bullet{This is the 2nd item.}
+                }
+            }
+        }
+        \\\\\\
+        \INSTRUCTIONS
+    }
+}
+
+
+\end{document}
